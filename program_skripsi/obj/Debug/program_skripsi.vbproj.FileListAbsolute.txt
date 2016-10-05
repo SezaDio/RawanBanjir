@@ -1,0 +1,34 @@
+D:\Kuliah\Semester 8\SKRIPSWEET\program_skripsi\program_skripsi\bin\Debug\program_skripsi.exe.config
+D:\Kuliah\Semester 8\SKRIPSWEET\program_skripsi\program_skripsi\bin\Debug\program_skripsi.exe
+D:\Kuliah\Semester 8\SKRIPSWEET\program_skripsi\program_skripsi\bin\Debug\program_skripsi.pdb
+D:\Kuliah\Semester 8\SKRIPSWEET\program_skripsi\program_skripsi\bin\Debug\program_skripsi.xml
+D:\Kuliah\Semester 8\SKRIPSWEET\program_skripsi\program_skripsi\obj\Debug\WindowsApplication1.Resources.resources
+D:\Kuliah\Semester 8\SKRIPSWEET\program_skripsi\program_skripsi\obj\Debug\program_skripsi.vbproj.GenerateResource.Cache
+D:\Kuliah\Semester 8\SKRIPSWEET\program_skripsi\program_skripsi\obj\Debug\program_skripsi.exe
+D:\Kuliah\Semester 8\SKRIPSWEET\program_skripsi\program_skripsi\obj\Debug\program_skripsi.xml
+D:\Kuliah\Semester 8\SKRIPSWEET\program_skripsi\program_skripsi\obj\Debug\program_skripsi.pdb
+D:\Kuliah\Semester 8\SKRIPSWEET\program_skripsi\program_skripsi\obj\Debug\WindowsApplication1.database.resources
+D:\Kuliah\Semester 8\SKRIPSWEET\program_skripsi\program_skripsi\obj\Debug\WindowsApplication1.home.resources
+D:\Kuliah\Semester 8\SKRIPSWEET\program_skripsi\program_skripsi\obj\Debug\WindowsApplication1.prediksi.resources
+D:\Kuliah\Semester 8\SKRIPSWEET\program_skripsi\program_skripsi\obj\Debug\WindowsApplication1.tambahData.resources
+D:\Kuliah\Semester 8\SKRIPSWEET\program_skripsi\program_skripsi\obj\Debug\WindowsApplication1.trainingProgress.resources
+D:\Kuliah\Semester 8\SKRIPSWEET\program_skripsi\program_skripsi\obj\Debug\WindowsApplication1.pelatihanPengujian.resources
+D:\Project Pak Ragil\program_skripsi\bin\Debug\program_skripsi.exe.config
+D:\Project Pak Ragil\program_skripsi\obj\Debug\program_skripsi.exe
+D:\Project Pak Ragil\program_skripsi\obj\Debug\program_skripsi.xml
+D:\Project Pak Ragil\program_skripsi\obj\Debug\program_skripsi.pdb
+D:\Project Pak Ragil\program_skripsi\bin\Debug\program_skripsi.exe
+D:\Project Pak Ragil\program_skripsi\bin\Debug\program_skripsi.pdb
+D:\Project Pak Ragil\program_skripsi\bin\Debug\program_skripsi.xml
+D:\Project Pak Ragil\program_skripsi\obj\Debug\WindowsApplication1.database.resources
+D:\Project Pak Ragil\program_skripsi\obj\Debug\WindowsApplication1.prediksi.resources
+D:\Project Pak Ragil\program_skripsi\obj\Debug\WindowsApplication1.tambahData.resources
+D:\Project Pak Ragil\program_skripsi\obj\Debug\WindowsApplication1.trainingProgress.resources
+D:\Project Pak Ragil\program_skripsi\obj\Debug\WindowsApplication1.home.resources
+D:\Project Pak Ragil\program_skripsi\obj\Debug\WindowsApplication1.pelatihanPengujian.resources
+D:\Project Pak Ragil\program_skripsi\obj\Debug\WindowsApplication1.Resources.resources
+D:\Project Pak Ragil\program_skripsi\obj\Debug\program_skripsi.vbproj.GenerateResource.Cache
+D:\Project Pak Ragil\RawanBanjir\program_skripsi\bin\Debug\program_skripsi.exe.config
+D:\Project Pak Ragil\RawanBanjir\program_skripsi\obj\Debug\program_skripsi.exe
+D:\Project Pak Ragil\RawanBanjir\program_skripsi\obj\Debug\program_skripsi.xml
+D:\Project Pak Ragil\RawanBanjir\program_skripsi\obj\Debug\program_skripsi.pdb
