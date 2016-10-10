@@ -13,7 +13,7 @@ Module koneksi
     Public strcon As String
 
     Public Sub konek()
-        strcon = "Driver={MySQL ODBC 5.3 ANSI Driver};database=skripsi;server = localhost; uid=root"
+        strcon = "Driver={MySQL ODBC 5.3 ANSI Driver};database=rawan_banjir;server = localhost; uid=root"
         conn = New OdbcConnection(strcon)
         If conn.State = ConnectionState.Closed Then
             conn.Open()

@@ -23,9 +23,9 @@ Partial Class home
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(home))
-        Dim ChartArea1 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
-        Dim Legend1 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
-        Dim Series1 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim ChartArea2 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
+        Dim Legend2 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
+        Dim Series2 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.TabPage1 = New System.Windows.Forms.TabPage()
@@ -54,7 +54,7 @@ Partial Class home
         '
         'Panel1
         '
-        Me.Panel1.BackColor = System.Drawing.Color.Silver
+        Me.Panel1.BackColor = System.Drawing.Color.WhiteSmoke
         Me.Panel1.Controls.Add(Me.TabControl1)
         Me.Panel1.Controls.Add(Me.Button4)
         Me.Panel1.Controls.Add(Me.Button3)
@@ -239,42 +239,42 @@ Partial Class home
         Me.Label8.Font = New System.Drawing.Font("MS Outlook", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label8.Location = New System.Drawing.Point(159, 3)
         Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(322, 18)
+        Me.Label8.Size = New System.Drawing.Size(288, 18)
         Me.Label8.TabIndex = 1
-        Me.Label8.Text = "GRAFIK TINGKAT KERUSAKAN JALAN RAYA"
+        Me.Label8.Text = "GRAFIK TINGKAT KERAWANAN BANJIR"
         '
         'Chart1
         '
         Me.Chart1.BackColor = System.Drawing.Color.DodgerBlue
         Me.Chart1.BackGradientStyle = System.Windows.Forms.DataVisualization.Charting.GradientStyle.Center
-        ChartArea1.AxisX.Enabled = System.Windows.Forms.DataVisualization.Charting.AxisEnabled.[True]
-        ChartArea1.AxisX.IsStartedFromZero = False
-        ChartArea1.AxisX.ScaleBreakStyle.LineColor = System.Drawing.Color.Maroon
-        ChartArea1.AxisX.ScaleBreakStyle.StartFromZero = System.Windows.Forms.DataVisualization.Charting.StartFromZero.No
-        ChartArea1.AxisX.Title = "Periode Tahun"
-        ChartArea1.AxisY.Enabled = System.Windows.Forms.DataVisualization.Charting.AxisEnabled.[True]
-        ChartArea1.AxisY.IsMarksNextToAxis = False
-        ChartArea1.AxisY.Title = "Nilai IRI"
-        ChartArea1.Name = "ChartArea1"
-        ChartArea1.ShadowColor = System.Drawing.Color.White
-        Me.Chart1.ChartAreas.Add(ChartArea1)
-        Legend1.BackColor = System.Drawing.Color.Transparent
-        Legend1.Name = "Legend1"
-        Legend1.Title = "Nilai IRI Terakhir"
-        Me.Chart1.Legends.Add(Legend1)
+        ChartArea2.AxisX.Enabled = System.Windows.Forms.DataVisualization.Charting.AxisEnabled.[True]
+        ChartArea2.AxisX.IsStartedFromZero = False
+        ChartArea2.AxisX.ScaleBreakStyle.LineColor = System.Drawing.Color.Maroon
+        ChartArea2.AxisX.ScaleBreakStyle.StartFromZero = System.Windows.Forms.DataVisualization.Charting.StartFromZero.No
+        ChartArea2.AxisX.Title = "Periode Tahun"
+        ChartArea2.AxisY.Enabled = System.Windows.Forms.DataVisualization.Charting.AxisEnabled.[True]
+        ChartArea2.AxisY.IsMarksNextToAxis = False
+        ChartArea2.AxisY.Title = "Nilai IRI"
+        ChartArea2.Name = "ChartArea1"
+        ChartArea2.ShadowColor = System.Drawing.Color.White
+        Me.Chart1.ChartAreas.Add(ChartArea2)
+        Legend2.BackColor = System.Drawing.Color.Transparent
+        Legend2.Name = "Legend1"
+        Legend2.Title = "Nilai IRI Terakhir"
+        Me.Chart1.Legends.Add(Legend2)
         Me.Chart1.Location = New System.Drawing.Point(8, 24)
         Me.Chart1.Name = "Chart1"
         Me.Chart1.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Light
-        Series1.ChartArea = "ChartArea1"
-        Series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
-        Series1.Color = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer))
-        Series1.IsXValueIndexed = True
-        Series1.Legend = "Legend1"
-        Series1.Name = "IRI"
-        Series1.ShadowColor = System.Drawing.Color.White
-        Series1.XValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.[String]
-        Series1.YValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.[Double]
-        Me.Chart1.Series.Add(Series1)
+        Series2.ChartArea = "ChartArea1"
+        Series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
+        Series2.Color = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer))
+        Series2.IsXValueIndexed = True
+        Series2.Legend = "Legend1"
+        Series2.Name = "IRI"
+        Series2.ShadowColor = System.Drawing.Color.White
+        Series2.XValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.[String]
+        Series2.YValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.[Double]
+        Me.Chart1.Series.Add(Series2)
         Me.Chart1.Size = New System.Drawing.Size(633, 292)
         Me.Chart1.TabIndex = 0
         Me.Chart1.Text = "GRAFIK TINGKAT KERUSAKAN JALAN RAYA"
@@ -290,7 +290,7 @@ Partial Class home
         Me.MaximizeBox = False
         Me.Name = "home"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "SIDIKTIKERJA"
+        Me.Text = "Rawan Banjir"
         Me.Panel1.ResumeLayout(False)
         Me.TabControl1.ResumeLayout(False)
         Me.Panel3.ResumeLayout(False)

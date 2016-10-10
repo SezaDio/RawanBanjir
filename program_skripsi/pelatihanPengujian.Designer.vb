@@ -23,9 +23,9 @@ Partial Class pelatihanPengujian
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(pelatihanPengujian))
-        Dim ChartArea1 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
-        Dim Legend1 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
-        Dim Series1 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim ChartArea3 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
+        Dim Legend3 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
+        Dim Series3 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
         Me.Panel3 = New System.Windows.Forms.Panel()
         Me.GroupBox4 = New System.Windows.Forms.GroupBox()
         Me.Label10 = New System.Windows.Forms.Label()
@@ -110,20 +110,20 @@ Partial Class pelatihanPengujian
         '
         'grafikLatih
         '
-        ChartArea1.AxisX.Title = "Epoch"
-        ChartArea1.AxisY.Title = "Nilai MSE"
-        ChartArea1.Name = "ChartArea1"
-        Me.grafikLatih.ChartAreas.Add(ChartArea1)
-        Legend1.Name = "Legend1"
-        Legend1.Title = "Nilai MSE Akhir"
-        Me.grafikLatih.Legends.Add(Legend1)
+        ChartArea3.AxisX.Title = "Epoch"
+        ChartArea3.AxisY.Title = "Nilai MSE"
+        ChartArea3.Name = "ChartArea1"
+        Me.grafikLatih.ChartAreas.Add(ChartArea3)
+        Legend3.Name = "Legend1"
+        Legend3.Title = "Nilai MSE Akhir"
+        Me.grafikLatih.Legends.Add(Legend3)
         Me.grafikLatih.Location = New System.Drawing.Point(7, 19)
         Me.grafikLatih.Name = "grafikLatih"
-        Series1.ChartArea = "ChartArea1"
-        Series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
-        Series1.Legend = "Legend1"
-        Series1.Name = "Series1"
-        Me.grafikLatih.Series.Add(Series1)
+        Series3.ChartArea = "ChartArea1"
+        Series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
+        Series3.Legend = "Legend1"
+        Series3.Name = "Series1"
+        Me.grafikLatih.Series.Add(Series3)
         Me.grafikLatih.Size = New System.Drawing.Size(674, 206)
         Me.grafikLatih.TabIndex = 0
         Me.grafikLatih.Text = "Chart1"
@@ -438,14 +438,14 @@ Partial Class pelatihanPengujian
         '
         'Panel1
         '
-        Me.Panel1.BackColor = System.Drawing.Color.Silver
+        Me.Panel1.BackColor = System.Drawing.Color.WhiteSmoke
         Me.Panel1.Controls.Add(Me.Button4)
         Me.Panel1.Controls.Add(Me.Button3)
         Me.Panel1.Controls.Add(Me.Button2)
         Me.Panel1.Controls.Add(Me.Button1)
         Me.Panel1.Location = New System.Drawing.Point(0, 0)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(143, 489)
+        Me.Panel1.Size = New System.Drawing.Size(143, 487)
         Me.Panel1.TabIndex = 2
         '
         'Button4
@@ -499,7 +499,7 @@ Partial Class pelatihanPengujian
         'bw_pengujian
         '
         '
-        'pelatihan
+        'pelatihanPengujian
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
@@ -509,10 +509,10 @@ Partial Class pelatihanPengujian
         Me.Controls.Add(Me.Panel2)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
         Me.MaximizeBox = False
-        Me.Name = "pelatihan"
+        Me.Name = "pelatihanPengujian"
         Me.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "SIDIKTIKERJA"
+        Me.Text = "Pelatihan dan Pengujian Data "
         Me.Panel3.ResumeLayout(False)
         Me.GroupBox4.ResumeLayout(False)
         Me.GroupBox4.PerformLayout()

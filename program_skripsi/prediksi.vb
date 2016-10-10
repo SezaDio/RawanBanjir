@@ -67,7 +67,7 @@ Public Class prediksi
 
         _hasillatih = New simpanHasilLatih
 
-        strcon = "Driver={MySQL ODBC 5.3 ANSI Driver};database=skripsi;server = localhost; uid=root"
+        strcon = "Driver={MySQL ODBC 5.3 ANSI Driver};database=rawan_banjir;server = localhost; uid=root"
         conn = New OdbcConnection(strcon)
         If conn.State = ConnectionState.Closed Then
             conn.Open()
@@ -115,12 +115,12 @@ Public Class prediksi
         Dim conn As OdbcConnection
 
         Dim i As Integer
-        strcon = "Driver={MySQL ODBC 5.3 ANSI Driver};database=skripsi;server = localhost; uid=root"
+        strcon = "Driver={MySQL ODBC 5.3 ANSI Driver};database=rawan_banjir;server = localhost; uid=root"
         conn = New OdbcConnection(strcon)
         If conn.State = ConnectionState.Closed Then
             conn.Open()
         End If
-        Dim query_load_data_prediksi As String = "Select suhu, curah_hujan, drainase, tot_lalin_smp, iri From variabel"
+        Dim query_load_data_prediksi As String = "Select skor_curahhujan, skor_drainase, skor_gunalahan, skor_topografi, tingkat_kerawanan From data_banjir"
         Dim cmd As OdbcCommand
 
         database.hitungData_pengujian()
@@ -132,11 +132,11 @@ Public Class prediksi
             i = 0
 
             While dr.Read()
-                tmp(i, 0) = dr("suhu")
-                tmp(i, 1) = dr("curah_hujan")
-                tmp(i, 2) = dr("drainase")
-                tmp(i, 3) = dr("tot_lalin_smp")
-                tmp(i, 4) = dr("iri")
+                tmp(i, 0) = dr("skor_curahhujan")
+                tmp(i, 1) = dr("skor_drainase")
+                tmp(i, 2) = dr("skor_gunalahan")
+                tmp(i, 3) = dr("skor_topografi")
+                tmp(i, 4) = dr("tingkat_kerawanan")
                 i = i + 1
             End While
         End Using
@@ -215,18 +215,9 @@ Public Class prediksi
     End Sub
 
     Private Sub clear_prediksi_Click(sender As Object, e As EventArgs) Handles clear_prediksi.Click
-        Me.input_bus_besar.Text = Nothing
-        Me.input_bus_kecil.Text = Nothing
         Me.input_hujan.Text = Nothing
-        Me.input_mikro_bus.Text = Nothing
         Me.input_mobil_pribadi.Text = Nothing
-        Me.input_pickup.Text = Nothing
-        Me.input_sepeda_motor.Text = Nothing
         Me.input_suhu.Text = Nothing
-        Me.input_truck_berat.Text = Nothing
-        Me.input_truck_ringan.Text = Nothing
-        Me.input_truck_sedang.Text = Nothing
-        Me.input_truck_trailer.Text = Nothing
         Me.input_drainase.Text = Nothing
         Me.prediksiIri.Text = Nothing
         Me.keterangan_prediksi.Text = Nothing
@@ -246,33 +237,6 @@ Public Class prediksi
             sukses = False
         ElseIf (String.IsNullOrEmpty(input_mobil_pribadi.Text.Trim())) Then
             MsgBox("Input jumlah mobil pribadi harus diisi", MsgBoxStyle.Exclamation, "Warning")
-            sukses = False
-        ElseIf (String.IsNullOrEmpty(input_mikro_bus.Text.Trim())) Then
-            MsgBox("Input jumlah mikro bus harus diisi", MsgBoxStyle.Exclamation, "Warning")
-            sukses = False
-        ElseIf (String.IsNullOrEmpty(input_bus_kecil.Text.Trim())) Then
-            MsgBox("Input jumlah bus kecil harus diisi", MsgBoxStyle.Exclamation, "Warning")
-            sukses = False
-        ElseIf (String.IsNullOrEmpty(input_bus_besar.Text.Trim())) Then
-            MsgBox("Input jumlah bus besar harus diisi", MsgBoxStyle.Exclamation, "Warning")
-            sukses = False
-        ElseIf (String.IsNullOrEmpty(input_pickup.Text.Trim())) Then
-            MsgBox("Input jumlah mobil pickup harus diisi", MsgBoxStyle.Exclamation, "Warning")
-            sukses = False
-        ElseIf (String.IsNullOrEmpty(input_truck_ringan.Text.Trim())) Then
-            MsgBox("Input jumlah truck ringan harus diisi", MsgBoxStyle.Exclamation, "Warning")
-            sukses = False
-        ElseIf (String.IsNullOrEmpty(input_truck_sedang.Text.Trim())) Then
-            MsgBox("Input jumlah truck sedang harus diisi", MsgBoxStyle.Exclamation, "Warning")
-            sukses = False
-        ElseIf (String.IsNullOrEmpty(input_truck_berat.Text.Trim())) Then
-            MsgBox("Input jumlah truck berat harus diisi", MsgBoxStyle.Exclamation, "Warning")
-            sukses = False
-        ElseIf (String.IsNullOrEmpty(input_truck_trailer.Text.Trim())) Then
-            MsgBox("Input jumlah truck trailer harus diisi", MsgBoxStyle.Exclamation, "Warning")
-            sukses = False
-        ElseIf (String.IsNullOrEmpty(input_sepeda_motor.Text.Trim())) Then
-            MsgBox("Input jumlah sepeda motor harus diisi", MsgBoxStyle.Exclamation, "Warning")
             sukses = False
         End If
 
@@ -302,15 +266,6 @@ Public Class prediksi
             drainase = 1
         End If
         mobilPribadi = Convert.ToInt32(Me.input_mobil_pribadi.Text)
-        mikroBus = Convert.ToInt32(Me.input_mikro_bus.Text)
-        busKecil = Convert.ToInt32(Me.input_bus_kecil.Text)
-        busBesar = Convert.ToInt32(Me.input_bus_besar.Text)
-        pickup = Convert.ToInt32(Me.input_pickup.Text)
-        truckRingan = Convert.ToInt32(Me.input_truck_ringan.Text)
-        truckSedang = Convert.ToInt32(Me.input_truck_sedang.Text)
-        truckBerat = Convert.ToInt32(Me.input_truck_berat.Text)
-        truckTrailer = Convert.ToInt32(Me.input_truck_trailer.Text)
-        sepedaMotor = Convert.ToInt32(Me.input_sepeda_motor.Text)
 
         'Memasukkan data dari tmp ke variabel xi_prediksi(i,j)
         For j = 0 To 3
@@ -434,63 +389,63 @@ Public Class prediksi
         End If
     End Sub
 
-    Private Sub input_mikro_bus_KeyPress(sender As Object, e As KeyPressEventArgs) Handles input_mikro_bus.KeyPress
+    Private Sub input_mikro_bus_KeyPress(sender As Object, e As KeyPressEventArgs)
         If Asc(e.KeyChar) <> 13 AndAlso Asc(e.KeyChar) <> 8 AndAlso Not IsNumeric(e.KeyChar) Then
             MsgBox("Inputan jumlah mikro bus harus berupa angka dan bernilai positif ", MsgBoxStyle.Exclamation, "Warning")
             e.Handled = True
         End If
     End Sub
 
-    Private Sub input_bus_kecil_KeyPress(sender As Object, e As KeyPressEventArgs) Handles input_bus_kecil.KeyPress
+    Private Sub input_bus_kecil_KeyPress(sender As Object, e As KeyPressEventArgs)
         If Asc(e.KeyChar) <> 13 AndAlso Asc(e.KeyChar) <> 8 AndAlso Not IsNumeric(e.KeyChar) Then
             MsgBox("Inputan jumlah bus kecil harus berupa angka dan bernilai positif ", MsgBoxStyle.Exclamation, "Warning")
             e.Handled = True
         End If
     End Sub
 
-    Private Sub input_bus_besar_KeyPress(sender As Object, e As KeyPressEventArgs) Handles input_bus_besar.KeyPress
+    Private Sub input_bus_besar_KeyPress(sender As Object, e As KeyPressEventArgs)
         If Asc(e.KeyChar) <> 13 AndAlso Asc(e.KeyChar) <> 8 AndAlso Not IsNumeric(e.KeyChar) Then
             MsgBox("Inputan jumlah bus besar harus berupa angka dan bernilai positif ", MsgBoxStyle.Exclamation, "Warning")
             e.Handled = True
         End If
     End Sub
 
-    Private Sub input_pickup_KeyPress(sender As Object, e As KeyPressEventArgs) Handles input_pickup.KeyPress
+    Private Sub input_pickup_KeyPress(sender As Object, e As KeyPressEventArgs)
         If Asc(e.KeyChar) <> 13 AndAlso Asc(e.KeyChar) <> 8 AndAlso Not IsNumeric(e.KeyChar) Then
             MsgBox("Inputan jumlah mobil pickup harus berupa angka dan bernilai positif ", MsgBoxStyle.Exclamation, "Warning")
             e.Handled = True
         End If
     End Sub
 
-    Private Sub input_truck_ringan_KeyPress(sender As Object, e As KeyPressEventArgs) Handles input_truck_ringan.KeyPress
+    Private Sub input_truck_ringan_KeyPress(sender As Object, e As KeyPressEventArgs)
         If Asc(e.KeyChar) <> 13 AndAlso Asc(e.KeyChar) <> 8 AndAlso Not IsNumeric(e.KeyChar) Then
             MsgBox("Inputan jumlah truck ringan harus berupa angka dan bernilai positif ", MsgBoxStyle.Exclamation, "Warning")
             e.Handled = True
         End If
     End Sub
 
-    Private Sub input_truck_sedang_KeyPress(sender As Object, e As KeyPressEventArgs) Handles input_truck_sedang.KeyPress
+    Private Sub input_truck_sedang_KeyPress(sender As Object, e As KeyPressEventArgs)
         If Asc(e.KeyChar) <> 13 AndAlso Asc(e.KeyChar) <> 8 AndAlso Not IsNumeric(e.KeyChar) Then
             MsgBox("Inputan jumlah truck sedang harus berupa angka dan bernilai positif ", MsgBoxStyle.Exclamation, "Warning")
             e.Handled = True
         End If
     End Sub
 
-    Private Sub input_truck_berat_KeyPress(sender As Object, e As KeyPressEventArgs) Handles input_truck_berat.KeyPress
+    Private Sub input_truck_berat_KeyPress(sender As Object, e As KeyPressEventArgs)
         If Asc(e.KeyChar) <> 13 AndAlso Asc(e.KeyChar) <> 8 AndAlso Not IsNumeric(e.KeyChar) Then
             MsgBox("Inputan jumlah truck berat harus berupa angka dan bernilai positif ", MsgBoxStyle.Exclamation, "Warning")
             e.Handled = True
         End If
     End Sub
 
-    Private Sub input_truck_trailer_KeyPress(sender As Object, e As KeyPressEventArgs) Handles input_truck_trailer.KeyPress
+    Private Sub input_truck_trailer_KeyPress(sender As Object, e As KeyPressEventArgs)
         If Asc(e.KeyChar) <> 13 AndAlso Asc(e.KeyChar) <> 8 AndAlso Not IsNumeric(e.KeyChar) Then
             MsgBox("Inputan jumlah truck trailer harus berupa angka dan bernilai positif ", MsgBoxStyle.Exclamation, "Warning")
             e.Handled = True
         End If
     End Sub
 
-    Private Sub input_sepeda_motor_KeyPress(sender As Object, e As KeyPressEventArgs) Handles input_sepeda_motor.KeyPress
+    Private Sub input_sepeda_motor_KeyPress(sender As Object, e As KeyPressEventArgs)
         If Asc(e.KeyChar) <> 13 AndAlso Asc(e.KeyChar) <> 8 AndAlso Not IsNumeric(e.KeyChar) Then
             MsgBox("Inputan jumlah sepeda motor harus berupa angka dan bernilai positif ", MsgBoxStyle.Exclamation, "Warning")
             e.Handled = True

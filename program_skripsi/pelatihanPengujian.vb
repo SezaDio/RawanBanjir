@@ -195,6 +195,7 @@ Public Class pelatihanPengujian
         For i = 0 To uper0
             _backpro.List_Target(i) = tmp(i, 4)
         Next
+        Stop
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click

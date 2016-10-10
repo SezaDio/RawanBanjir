@@ -32,3 +32,14 @@ D:\Project Pak Ragil\RawanBanjir\program_skripsi\bin\Debug\program_skripsi.exe.c
 D:\Project Pak Ragil\RawanBanjir\program_skripsi\obj\Debug\program_skripsi.exe
 D:\Project Pak Ragil\RawanBanjir\program_skripsi\obj\Debug\program_skripsi.xml
 D:\Project Pak Ragil\RawanBanjir\program_skripsi\obj\Debug\program_skripsi.pdb
+D:\Project Pak Ragil\RawanBanjir\program_skripsi\obj\Debug\WindowsApplication1.database.resources
+D:\Project Pak Ragil\RawanBanjir\program_skripsi\obj\Debug\WindowsApplication1.prediksi.resources
+D:\Project Pak Ragil\RawanBanjir\program_skripsi\obj\Debug\WindowsApplication1.tambahData.resources
+D:\Project Pak Ragil\RawanBanjir\program_skripsi\obj\Debug\WindowsApplication1.trainingProgress.resources
+D:\Project Pak Ragil\RawanBanjir\program_skripsi\obj\Debug\WindowsApplication1.home.resources
+D:\Project Pak Ragil\RawanBanjir\program_skripsi\obj\Debug\WindowsApplication1.pelatihanPengujian.resources
+D:\Project Pak Ragil\RawanBanjir\program_skripsi\obj\Debug\WindowsApplication1.Resources.resources
+D:\Project Pak Ragil\RawanBanjir\program_skripsi\obj\Debug\program_skripsi.vbproj.GenerateResource.Cache
+D:\Project Pak Ragil\RawanBanjir\program_skripsi\bin\Debug\program_skripsi.exe
+D:\Project Pak Ragil\RawanBanjir\program_skripsi\bin\Debug\program_skripsi.pdb
+D:\Project Pak Ragil\RawanBanjir\program_skripsi\bin\Debug\program_skripsi.xml
