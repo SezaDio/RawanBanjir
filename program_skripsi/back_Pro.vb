@@ -206,12 +206,12 @@ Public Class Back_Pro
         'Normalisasi data inputan (x1, x2, x3, x4) agar nilainya antara 0 hingga 1
         For i = 0 To jumlah_data1
             For j = 0 To 3
-                If (xi(i, j) = 0 Or xi(i, j) = 1 Or xi(i, j) = 0.5) Then
-                    xi(i, j) = xi(i, j)
-                Else
-                    xi(i, j) = ((0.8 * (xi(i, j) - min(j))) / (max(j) - min(j)) + 0.1)
-                    'xi(i, j) = (xi(i, j) - min(j)) / (max(j) - min(j))
-                End If
+                'If (xi(i, j) = 0 Or xi(i, j) = 1 Or xi(i, j) = 0.5) Then
+                '    xi(i, j) = xi(i, j)
+                'Else
+                xi(i, j) = ((0.8 * (xi(i, j) - min(j))) / (max(j) - min(j)) + 0.1)
+                'xi(i, j) = (xi(i, j) - min(j)) / (max(j) - min(j))
+                'End If
             Next
         Next
 
@@ -227,12 +227,12 @@ Public Class Back_Pro
 
         'Normalisasi nilai pada tiap target di dalam list
         For i = 0 To List_Target.GetUpperBound(0)
-            If (List_Target(i) = 0 Or List_Target(i) = 1 Or List_Target(i) = 0.5) Then
-                List_Target(i) = Math.Round(List_Target(i), 4)
-            Else
-                List_Target(i) = Math.Round(((0.8 * (List_Target(i) - nilai_kecil)) / (nilai_besar - nilai_kecil) + 0.1), 4)
-                'List_Target(i) = Math.Round((List_Target(i) - nilai_kecil) / (nilai_besar - nilai_kecil), 4)
-            End If
+            'If (List_Target(i) = 0 Or List_Target(i) = 1 Or List_Target(i) = 0.5) Then
+            '    List_Target(i) = Math.Round(List_Target(i), 4)
+            'Else
+            List_Target(i) = Math.Round(((0.8 * (List_Target(i) - nilai_kecil)) / (nilai_besar - nilai_kecil) + 0.1), 4)
+            'List_Target(i) = Math.Round((List_Target(i) - nilai_kecil) / (nilai_besar - nilai_kecil), 4)
+            'End If
         Next
 
         Training_Finish = False

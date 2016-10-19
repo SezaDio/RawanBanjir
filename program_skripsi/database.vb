@@ -55,7 +55,7 @@ Public Class database
                 tmp(i, 1) = dr("skor_curahhujan")
                 tmp(i, 2) = dr("skor_drainase")
                 tmp(i, 3) = dr("skor_gunalahan")
-                tmp(i, 4) = dr("skor_topografi")
+                tmp(i, 4) = Math.Round((dr("skor_topografi")), 2)
                 tmp(i, 5) = dr("tingkat_kerawanan")
                 tmp(i, 6) = dr("status")
                 i = i + 1
@@ -90,7 +90,7 @@ Public Class database
 
     Sub database_grid_tampilHasilLatih()
         konek()
-        Dim query_load_tampil_dataHasilLatih As String = "Select id_latih, learning, epoh, error, hidden, data_latih, data_uji, total_epoch_digunakan, mse_latih, mse_uji, timestamp From hasillatih order by mse_uji"
+        Dim query_load_tampil_dataHasilLatih As String = "Select id_latih, learning, epoh, error, hidden, data_latih, data_uji, total_epoch_digunakan, mse_latih, mse_uji, timestamp From hasillatih order by mse_uji desc"
         Dim cmd As OdbcCommand
         'Dim tolError As Double
         Using conn
@@ -283,5 +283,9 @@ Public Class database
             jumlah_data_hasil_pelatihan.Text = jum_dataHasilPelatihan.ToString
             database_grid_tampilHasilLatih()
         End If
+    End Sub
+
+    Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
+
     End Sub
 End Class

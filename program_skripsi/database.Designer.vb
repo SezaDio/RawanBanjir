@@ -23,9 +23,9 @@ Partial Class database
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(database))
-        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle9 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.Button4 = New System.Windows.Forms.Button()
         Me.Button3 = New System.Windows.Forms.Button()
@@ -41,6 +41,15 @@ Partial Class database
         Me.Label2 = New System.Windows.Forms.Label()
         Me.tambah = New System.Windows.Forms.Button()
         Me.data = New System.Windows.Forms.DataGridView()
+        Me.id = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.suhu = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.hujan = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.drainase = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.total_lalin = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.iri = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.status = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.edit = New System.Windows.Forms.DataGridViewButtonColumn()
+        Me.hapus = New System.Windows.Forms.DataGridViewButtonColumn()
         Me.TabPage2 = New System.Windows.Forms.TabPage()
         Me.jumlah_data_hasil_pelatihan = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
@@ -57,15 +66,6 @@ Partial Class database
         Me.mse_latih = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.mse_uji = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.aksi = New System.Windows.Forms.DataGridViewButtonColumn()
-        Me.id = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.suhu = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.hujan = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.drainase = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.total_lalin = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.iri = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.status = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.edit = New System.Windows.Forms.DataGridViewButtonColumn()
-        Me.hapus = New System.Windows.Forms.DataGridViewButtonColumn()
         Me.Panel1.SuspendLayout()
         Me.Panel3.SuspendLayout()
         Me.TabControl1.SuspendLayout()
@@ -244,6 +244,68 @@ Partial Class database
         Me.data.Size = New System.Drawing.Size(919, 457)
         Me.data.TabIndex = 2
         '
+        'id
+        '
+        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.MenuHighlight
+        DataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.Black
+        Me.id.DefaultCellStyle = DataGridViewCellStyle4
+        Me.id.HeaderText = "ID Rawan Banjir"
+        Me.id.Name = "id"
+        Me.id.ReadOnly = True
+        '
+        'suhu
+        '
+        Me.suhu.HeaderText = "Skor Curah Hujan"
+        Me.suhu.Name = "suhu"
+        Me.suhu.ReadOnly = True
+        '
+        'hujan
+        '
+        Me.hujan.HeaderText = "Skor Drainase"
+        Me.hujan.Name = "hujan"
+        Me.hujan.ReadOnly = True
+        '
+        'drainase
+        '
+        Me.drainase.HeaderText = "Skor Guna Lahan"
+        Me.drainase.Name = "drainase"
+        Me.drainase.ReadOnly = True
+        '
+        'total_lalin
+        '
+        Me.total_lalin.HeaderText = "Skor Topografi"
+        Me.total_lalin.Name = "total_lalin"
+        Me.total_lalin.ReadOnly = True
+        '
+        'iri
+        '
+        Me.iri.HeaderText = "Tingkat Rawan"
+        Me.iri.Name = "iri"
+        Me.iri.ReadOnly = True
+        '
+        'status
+        '
+        Me.status.HeaderText = "Status"
+        Me.status.Name = "status"
+        Me.status.ReadOnly = True
+        '
+        'edit
+        '
+        Me.edit.HeaderText = "Edit"
+        Me.edit.Name = "edit"
+        Me.edit.ReadOnly = True
+        Me.edit.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.edit.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
+        '
+        'hapus
+        '
+        Me.hapus.HeaderText = "Hapus"
+        Me.hapus.Name = "hapus"
+        Me.hapus.ReadOnly = True
+        Me.hapus.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.hapus.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
+        '
         'TabPage2
         '
         Me.TabPage2.Controls.Add(Me.jumlah_data_hasil_pelatihan)
@@ -338,9 +400,9 @@ Partial Class database
         '
         'toleransi_error
         '
-        DataGridViewCellStyle7.Format = "N6"
-        DataGridViewCellStyle7.NullValue = Nothing
-        Me.toleransi_error.DefaultCellStyle = DataGridViewCellStyle7
+        DataGridViewCellStyle5.Format = "N6"
+        DataGridViewCellStyle5.NullValue = Nothing
+        Me.toleransi_error.DefaultCellStyle = DataGridViewCellStyle5
         Me.toleransi_error.FillWeight = 90.01694!
         Me.toleransi_error.HeaderText = "Toleransi Error"
         Me.toleransi_error.Name = "toleransi_error"
@@ -349,9 +411,9 @@ Partial Class database
         '
         'hidden
         '
-        DataGridViewCellStyle8.Format = "N4"
-        DataGridViewCellStyle8.NullValue = Nothing
-        Me.hidden.DefaultCellStyle = DataGridViewCellStyle8
+        DataGridViewCellStyle6.Format = "N4"
+        DataGridViewCellStyle6.NullValue = Nothing
+        Me.hidden.DefaultCellStyle = DataGridViewCellStyle6
         Me.hidden.FillWeight = 90.01694!
         Me.hidden.HeaderText = "Jumlah Neuron Hidden"
         Me.hidden.Name = "hidden"
@@ -374,7 +436,7 @@ Partial Class database
         '
         'mse_uji
         '
-        Me.mse_uji.HeaderText = "MSE Pengujian"
+        Me.mse_uji.HeaderText = "Akurasi Pengujian (%)"
         Me.mse_uji.Name = "mse_uji"
         Me.mse_uji.ReadOnly = True
         '
@@ -385,68 +447,6 @@ Partial Class database
         Me.aksi.Name = "aksi"
         Me.aksi.ReadOnly = True
         Me.aksi.Width = 110
-        '
-        'id
-        '
-        DataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.MenuHighlight
-        DataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.Black
-        Me.id.DefaultCellStyle = DataGridViewCellStyle9
-        Me.id.HeaderText = "ID Rawan Banjir"
-        Me.id.Name = "id"
-        Me.id.ReadOnly = True
-        '
-        'suhu
-        '
-        Me.suhu.HeaderText = "Skor Curah Hujan"
-        Me.suhu.Name = "suhu"
-        Me.suhu.ReadOnly = True
-        '
-        'hujan
-        '
-        Me.hujan.HeaderText = "Skor Drainase"
-        Me.hujan.Name = "hujan"
-        Me.hujan.ReadOnly = True
-        '
-        'drainase
-        '
-        Me.drainase.HeaderText = "Skor Guna Lahan"
-        Me.drainase.Name = "drainase"
-        Me.drainase.ReadOnly = True
-        '
-        'total_lalin
-        '
-        Me.total_lalin.HeaderText = "Skor Topografi"
-        Me.total_lalin.Name = "total_lalin"
-        Me.total_lalin.ReadOnly = True
-        '
-        'iri
-        '
-        Me.iri.HeaderText = "Tingkat Rawan"
-        Me.iri.Name = "iri"
-        Me.iri.ReadOnly = True
-        '
-        'status
-        '
-        Me.status.HeaderText = "Status"
-        Me.status.Name = "status"
-        Me.status.ReadOnly = True
-        '
-        'edit
-        '
-        Me.edit.HeaderText = "Edit"
-        Me.edit.Name = "edit"
-        Me.edit.ReadOnly = True
-        Me.edit.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.edit.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
-        '
-        'hapus
-        '
-        Me.hapus.HeaderText = "Hapus"
-        Me.hapus.Name = "hapus"
-        Me.hapus.ReadOnly = True
-        Me.hapus.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.hapus.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
         '
         'database
         '
@@ -492,6 +492,15 @@ Partial Class database
     Friend WithEvents jum_data_pengujian As System.Windows.Forms.TextBox
     Friend WithEvents Label3 As System.Windows.Forms.Label
     Friend WithEvents jum_data_pelatihan As System.Windows.Forms.TextBox
+    Friend WithEvents id As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents suhu As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents hujan As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents drainase As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents total_lalin As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents iri As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents status As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents edit As System.Windows.Forms.DataGridViewButtonColumn
+    Friend WithEvents hapus As System.Windows.Forms.DataGridViewButtonColumn
     Friend WithEvents id_hasil_latih As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents id_variabel As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents data_latih As System.Windows.Forms.DataGridViewTextBoxColumn
@@ -504,13 +513,4 @@ Partial Class database
     Friend WithEvents mse_latih As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents mse_uji As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents aksi As System.Windows.Forms.DataGridViewButtonColumn
-    Friend WithEvents id As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents suhu As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents hujan As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents drainase As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents total_lalin As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents iri As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents status As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents edit As System.Windows.Forms.DataGridViewButtonColumn
-    Friend WithEvents hapus As System.Windows.Forms.DataGridViewButtonColumn
 End Class

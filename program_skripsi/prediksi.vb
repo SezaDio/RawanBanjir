@@ -23,21 +23,11 @@ Public Class prediksi
     Private _dataHasilLatih As simpanHasilLatih
     Private _hasilPrediksi As feedForwardPrediksi
 
-    Dim busBesar As Double
-    Dim busKecil As Integer
-    Dim hujan As Double
-    Dim mikroBus As Integer
-    Dim mobilPribadi As Integer
-    Dim pickup As Integer
-    Dim sepedaMotor As Double
-    Dim suhu As Double
-    Dim truckBerat As Double
-    Dim truckRingan As Double
-    Dim truckSedang As Double
-    Dim truckTrailer As Double
-    Dim drainase As Double
+    Dim skor_topografi As Double
+    Dim skor_gunalahan As Integer
+    Dim skor_curahhujan As Integer
+    Dim skor_drainase As Integer
     Dim hasil_prediksi As Double
-    Dim totalKendaraan As Integer
     Dim _hasillatih As simpanHasilLatih
     Dim tmp(,) As Double
 
@@ -73,7 +63,7 @@ Public Class prediksi
             conn.Open()
         End If
         Dim cmd As OdbcCommand
-        Dim query_load_data_hasil_latih As String = "Select * From hasillatih order by mse_uji asc limit 1"
+        Dim query_load_data_hasil_latih As String = "Select * From hasillatih order by mse_uji desc limit 1"
 
         Using conn
             cmd = New Odbc.OdbcCommand(query_load_data_hasil_latih, conn)
@@ -135,41 +125,17 @@ Public Class prediksi
                 tmp(i, 0) = dr("skor_curahhujan")
                 tmp(i, 1) = dr("skor_drainase")
                 tmp(i, 2) = dr("skor_gunalahan")
-                tmp(i, 3) = dr("skor_topografi")
+                tmp(i, 3) = Math.Round((dr("skor_topografi")), 2)
                 tmp(i, 4) = dr("tingkat_kerawanan")
                 i = i + 1
             End While
         End Using
     End Sub
 
-    Function ambil_data_terakhir() As Double
-        Dim conn As OdbcConnection
-        Dim data_terakhir As Double
-        strcon = "Driver={MySQL ODBC 5.3 ANSI Driver};database=skripsi;server = localhost; uid=root"
-        conn = New OdbcConnection(strcon)
-        If conn.State = ConnectionState.Closed Then
-            conn.Open()
-        End If
-        Dim query_ambil_data_terakhir As String = "Select iri From variabel Order By id_variabel desc Limit 1"
-        Dim cmd As OdbcCommand
-        Using conn
-            cmd = New Odbc.OdbcCommand(query_ambil_data_terakhir, conn)
-            dr = cmd.ExecuteReader()
-
-            If dr.Read Then
-                data_terakhir = dr("iri")
-            Else
-                MsgBox("Database is empty")
-            End If
-        End Using
-        Return data_terakhir
-    End Function
-
     Private Sub training_Click(sender As Object, e As EventArgs) Handles predict.Click
         Dim hasil_cek_input As Boolean
-        Dim kategori_jalan As String = ""
+        Dim kelas As Integer
 
-        last_data = ambil_data_terakhir()
         _hasilPrediksi = New feedForwardPrediksi
 
         hasil_cek_input = CheckInput_Prediksi()
@@ -185,27 +151,22 @@ Public Class prediksi
 
             MsgBox("Proses prediksi selesai")
 
-            If hasil_prediksi >= 0.0 And hasil_prediksi <= 4.0 Then
-                kategori_jalan = "Very Good"
-            ElseIf hasil_prediksi > 4.0 And hasil_prediksi <= 8.0 Then
-                kategori_jalan = "Good"
-            ElseIf hasil_prediksi > 8.0 And hasil_prediksi <= 12.0 Then
-                kategori_jalan = "Fair"
-            ElseIf hasil_prediksi > 12.0 And hasil_prediksi <= 16.0 Then
-                kategori_jalan = "Poor"
-            ElseIf hasil_prediksi > 16.0 And hasil_prediksi <= 20 Then
-                kategori_jalan = "Bad"
-            ElseIf hasil_prediksi > 20 Then
-                kategori_jalan = "Very Bad"
+            If hasil_prediksi >= 1.0 And hasil_prediksi <= 1.75 Then
+                kelas = 1
+                keterangan_prediksi.Text = "Tidak Rawan Banjir"
+            ElseIf hasil_prediksi > 1.75 And hasil_prediksi <= 2.5 Then
+                kelas = 2
+                keterangan_prediksi.Text = "Cukup Rawan Banjir"
+            ElseIf hasil_prediksi > 2.5 And hasil_prediksi <= 3.25 Then
+                kelas = 3
+                keterangan_prediksi.Text = "Rawan Banjir"
+            ElseIf hasil_prediksi > 3.25 And hasil_prediksi <= 4 Then
+                kelas = 4
+                keterangan_prediksi.Text = "Sangat Rawan Banjir"
             End If
 
-            prediksiIri.Text = hasil_prediksi.ToString
+            kategori_jalan.Text = kelas.ToString
 
-            If hasil_prediksi < last_data Then
-                keterangan_prediksi.Text = "Berdasarkan prediksi yang dilakukan, didapatkan nilai IRI sebesar " & hasil_prediksi.ToString & " dengan kategori kondisi jalan " & kategori_jalan & ". Penurunan nilai IRI ini menunjukkan bahwa terdapat proses perbaikan jalan yang dilakukan."
-            Else
-                keterangan_prediksi.Text = "Berdasarkan prediksi yang dilakukan, didapatkan nilai IRI sebesar " & hasil_prediksi.ToString & " dengan kategori kondisi jalan " & kategori_jalan & "."
-            End If
         End If
 
     End Sub
@@ -215,28 +176,28 @@ Public Class prediksi
     End Sub
 
     Private Sub clear_prediksi_Click(sender As Object, e As EventArgs) Handles clear_prediksi.Click
-        Me.input_hujan.Text = Nothing
-        Me.input_mobil_pribadi.Text = Nothing
-        Me.input_suhu.Text = Nothing
-        Me.input_drainase.Text = Nothing
-        Me.prediksiIri.Text = Nothing
+        Me.input_skordrainase.Text = Nothing
+        Me.input_skortopografi.Text = Nothing
+        Me.input_skorcurahhujan.Text = Nothing
+        Me.input_skorgunalahan.Text = Nothing
+        Me.kategori_jalan.Text = Nothing
         Me.keterangan_prediksi.Text = Nothing
     End Sub
 
     Private Function CheckInput_Prediksi() As Boolean
         Dim sukses As Boolean = True
 
-        If (String.IsNullOrEmpty(input_suhu.Text.Trim())) Then
-            MsgBox("Input suhu harus diisi", MsgBoxStyle.Exclamation, "Warning")
+        If (String.IsNullOrEmpty(input_skorcurahhujan.Text.Trim())) Then
+            MsgBox("Input skor curah hujan harus diisi", MsgBoxStyle.Exclamation, "Warning")
             sukses = False
-        ElseIf (String.IsNullOrEmpty(input_hujan.Text.Trim())) Then
-            MsgBox("Input curah hujan harus diisi", MsgBoxStyle.Exclamation, "Warning")
+        ElseIf (String.IsNullOrEmpty(input_skordrainase.Text.Trim())) Then
+            MsgBox("Input skor drainase harus diisi", MsgBoxStyle.Exclamation, "Warning")
             sukses = False
-        ElseIf (String.IsNullOrEmpty(input_drainase.Text.Trim())) Then
-            MsgBox("Input keadaan drainase harus diisi", MsgBoxStyle.Exclamation, "Warning")
+        ElseIf (String.IsNullOrEmpty(input_skorgunalahan.Text.Trim())) Then
+            MsgBox("Input skor guna lahan harus diisi", MsgBoxStyle.Exclamation, "Warning")
             sukses = False
-        ElseIf (String.IsNullOrEmpty(input_mobil_pribadi.Text.Trim())) Then
-            MsgBox("Input jumlah mobil pribadi harus diisi", MsgBoxStyle.Exclamation, "Warning")
+        ElseIf (String.IsNullOrEmpty(input_skortopografi.Text.Trim())) Then
+            MsgBox("Input skor topografi harus diisi", MsgBoxStyle.Exclamation, "Warning")
             sukses = False
         End If
 
@@ -255,17 +216,39 @@ Public Class prediksi
         ReDim tmp_wjk(_dataHasilLatih.hidden, 0)
         ReDim listTarget_prediksi(tmp.GetUpperBound(0))
 
-        'Pembacaan Inputan variabel yang diinputkaan oleh user
-        suhu = Double.Parse(Me.input_suhu.Text)
-        hujan = Double.Parse(Me.input_hujan.Text)
-        If input_drainase.SelectedIndex = 0 Then
-            drainase = 0
-        ElseIf input_drainase.SelectedIndex = 1 Then
-            drainase = 0.5
-        Else
-            drainase = 1
+        'Pembacaan Input skor curah hujan
+        If Double.Parse(Me.input_skorcurahhujan.Text) >= 0 And Double.Parse(Me.input_skorcurahhujan.Text) <= 100 Then
+            skor_curahhujan = 1
+        ElseIf Double.Parse(Me.input_skorcurahhujan.Text) >= 101 And Double.Parse(Me.input_skorcurahhujan.Text) <= 300 Then
+            skor_curahhujan = 2
+        ElseIf Double.Parse(Me.input_skorcurahhujan.Text) >= 301 And Double.Parse(Me.input_skorcurahhujan.Text) <= 400 Then
+            skor_curahhujan = 3
+        ElseIf Double.Parse(Me.input_skorcurahhujan.Text) > 400 Then
+            skor_curahhujan = 4
         End If
-        mobilPribadi = Convert.ToInt32(Me.input_mobil_pribadi.Text)
+
+        'Pembacaan input skor drainase
+        If input_skordrainase.SelectedIndex = 0 Then
+            skor_drainase = 1
+        Else
+            skor_drainase = 2
+        End If
+
+        'Pembacaan input skor guna lahan
+        If input_skorgunalahan.SelectedIndex = 0 Then
+            skor_gunalahan = 5
+        ElseIf input_skorgunalahan.SelectedIndex = 1 Then
+            skor_gunalahan = 4
+        ElseIf input_skorgunalahan.SelectedIndex = 2 Then
+            skor_gunalahan = 3
+        ElseIf input_skorgunalahan.SelectedIndex = 3 Then
+            skor_gunalahan = 2
+        ElseIf input_skorgunalahan.SelectedIndex = 4 Then
+            skor_gunalahan = 1
+        End If
+
+        'Pembacaan input skor topografi
+        skor_topografi = CDbl(Me.input_skortopografi.Text)
 
         'Memasukkan data dari tmp ke variabel xi_prediksi(i,j)
         For j = 0 To 3
@@ -293,31 +276,22 @@ Public Class prediksi
         Next
 
         'Mencari max min untuk nilai target
-        For i = 0 To listTarget_prediksi.GetUpperBound(0)
-            If listTarget_prediksi(i) > max_target Then
-                max_target = listTarget_prediksi(i)
-            End If
-            If listTarget_prediksi(i) < min_target Then
-                min_target = listTarget_prediksi(i)
-            End If
-        Next
-
-        'Konversi jumlah kendaraan ke satuan SMP
-        busBesar = busBesar * 1.2
-        truckRingan = truckRingan * 1.2
-        truckSedang = truckSedang * 1.2
-        truckBerat = truckBerat * 1.2
-        truckTrailer = truckTrailer * 1.2
-        sepedaMotor = sepedaMotor * 0.25
-
-        'Jumlah total kendaraan berdasarkan satuan SMP
-        totalKendaraan = busBesar + busKecil + mikroBus + mobilPribadi + pickup + sepedaMotor + truckBerat + truckRingan + truckSedang + truckTrailer
+        max_target = 4.0
+        min_target = 1.0
+        'For i = 0 To listTarget_prediksi.GetUpperBound(0)
+        '    If listTarget_prediksi(i) > max_target Then
+        '        max_target = listTarget_prediksi(i)
+        '    End If
+        '    If listTarget_prediksi(i) < min_target Then
+        '        min_target = listTarget_prediksi(i)
+        '    End If
+        'Next
 
         'Memasukkan data iputan ke dalam array
-        xi_prediksi(0) = suhu
-        xi_prediksi(1) = hujan
-        xi_prediksi(2) = drainase
-        xi_prediksi(3) = totalKendaraan
+        xi_prediksi(0) = skor_curahhujan
+        xi_prediksi(1) = skor_drainase
+        xi_prediksi(2) = skor_gunalahan
+        xi_prediksi(3) = skor_topografi
 
         'Normalisasi data inputan (x1, x2, x3, x4) agar nilainya antara 0 hingga 1
         For i = 0 To 3
@@ -368,87 +342,18 @@ Public Class prediksi
         Me.Visible = False
     End Sub
 
-    Private Sub input_suhu_KeyPress(sender As Object, e As KeyPressEventArgs) Handles input_suhu.KeyPress
+    Private Sub input_skorcurahhujan_KeyPress(sender As Object, e As KeyPressEventArgs) Handles input_skorcurahhujan.KeyPress
         If Asc(e.KeyChar) <> 13 AndAlso Asc(e.KeyChar) <> 8 AndAlso Not IsNumeric(e.KeyChar) And (e.KeyChar <> ".") Then
-            MsgBox("Inputan suhu harus berupa angka dan bernilai positif ", MsgBoxStyle.Exclamation, "Warning")
+            MsgBox("Inputan skor curah hujan harus berupa angka dan bernilai positif ", MsgBoxStyle.Exclamation, "Warning")
             e.Handled = True
         End If
     End Sub
 
-    Private Sub input_hujan_KeyPress(sender As Object, e As KeyPressEventArgs) Handles input_hujan.KeyPress
+    Private Sub input_skortopografi_KeyPress(sender As Object, e As KeyPressEventArgs) Handles input_skortopografi.KeyPress
         If Asc(e.KeyChar) <> 13 AndAlso Asc(e.KeyChar) <> 8 AndAlso Not IsNumeric(e.KeyChar) And (e.KeyChar <> ".") Then
-            MsgBox("Inputan curah hujan harus berupa angka dan bernilai positif ", MsgBoxStyle.Exclamation, "Warning")
+            MsgBox("Inputan skor topografi harus berupa angka dan bernilai positif ", MsgBoxStyle.Exclamation, "Warning")
             e.Handled = True
         End If
     End Sub
 
-    Private Sub input_mobil_pribadi_KeyPress(sender As Object, e As KeyPressEventArgs) Handles input_mobil_pribadi.KeyPress
-        If Asc(e.KeyChar) <> 13 AndAlso Asc(e.KeyChar) <> 8 AndAlso Not IsNumeric(e.KeyChar) Then
-            MsgBox("Inputan jumlah mobil pribadi harus berupa angka dan bernilai positif ", MsgBoxStyle.Exclamation, "Warning")
-            e.Handled = True
-        End If
-    End Sub
-
-    Private Sub input_mikro_bus_KeyPress(sender As Object, e As KeyPressEventArgs)
-        If Asc(e.KeyChar) <> 13 AndAlso Asc(e.KeyChar) <> 8 AndAlso Not IsNumeric(e.KeyChar) Then
-            MsgBox("Inputan jumlah mikro bus harus berupa angka dan bernilai positif ", MsgBoxStyle.Exclamation, "Warning")
-            e.Handled = True
-        End If
-    End Sub
-
-    Private Sub input_bus_kecil_KeyPress(sender As Object, e As KeyPressEventArgs)
-        If Asc(e.KeyChar) <> 13 AndAlso Asc(e.KeyChar) <> 8 AndAlso Not IsNumeric(e.KeyChar) Then
-            MsgBox("Inputan jumlah bus kecil harus berupa angka dan bernilai positif ", MsgBoxStyle.Exclamation, "Warning")
-            e.Handled = True
-        End If
-    End Sub
-
-    Private Sub input_bus_besar_KeyPress(sender As Object, e As KeyPressEventArgs)
-        If Asc(e.KeyChar) <> 13 AndAlso Asc(e.KeyChar) <> 8 AndAlso Not IsNumeric(e.KeyChar) Then
-            MsgBox("Inputan jumlah bus besar harus berupa angka dan bernilai positif ", MsgBoxStyle.Exclamation, "Warning")
-            e.Handled = True
-        End If
-    End Sub
-
-    Private Sub input_pickup_KeyPress(sender As Object, e As KeyPressEventArgs)
-        If Asc(e.KeyChar) <> 13 AndAlso Asc(e.KeyChar) <> 8 AndAlso Not IsNumeric(e.KeyChar) Then
-            MsgBox("Inputan jumlah mobil pickup harus berupa angka dan bernilai positif ", MsgBoxStyle.Exclamation, "Warning")
-            e.Handled = True
-        End If
-    End Sub
-
-    Private Sub input_truck_ringan_KeyPress(sender As Object, e As KeyPressEventArgs)
-        If Asc(e.KeyChar) <> 13 AndAlso Asc(e.KeyChar) <> 8 AndAlso Not IsNumeric(e.KeyChar) Then
-            MsgBox("Inputan jumlah truck ringan harus berupa angka dan bernilai positif ", MsgBoxStyle.Exclamation, "Warning")
-            e.Handled = True
-        End If
-    End Sub
-
-    Private Sub input_truck_sedang_KeyPress(sender As Object, e As KeyPressEventArgs)
-        If Asc(e.KeyChar) <> 13 AndAlso Asc(e.KeyChar) <> 8 AndAlso Not IsNumeric(e.KeyChar) Then
-            MsgBox("Inputan jumlah truck sedang harus berupa angka dan bernilai positif ", MsgBoxStyle.Exclamation, "Warning")
-            e.Handled = True
-        End If
-    End Sub
-
-    Private Sub input_truck_berat_KeyPress(sender As Object, e As KeyPressEventArgs)
-        If Asc(e.KeyChar) <> 13 AndAlso Asc(e.KeyChar) <> 8 AndAlso Not IsNumeric(e.KeyChar) Then
-            MsgBox("Inputan jumlah truck berat harus berupa angka dan bernilai positif ", MsgBoxStyle.Exclamation, "Warning")
-            e.Handled = True
-        End If
-    End Sub
-
-    Private Sub input_truck_trailer_KeyPress(sender As Object, e As KeyPressEventArgs)
-        If Asc(e.KeyChar) <> 13 AndAlso Asc(e.KeyChar) <> 8 AndAlso Not IsNumeric(e.KeyChar) Then
-            MsgBox("Inputan jumlah truck trailer harus berupa angka dan bernilai positif ", MsgBoxStyle.Exclamation, "Warning")
-            e.Handled = True
-        End If
-    End Sub
-
-    Private Sub input_sepeda_motor_KeyPress(sender As Object, e As KeyPressEventArgs)
-        If Asc(e.KeyChar) <> 13 AndAlso Asc(e.KeyChar) <> 8 AndAlso Not IsNumeric(e.KeyChar) Then
-            MsgBox("Inputan jumlah sepeda motor harus berupa angka dan bernilai positif ", MsgBoxStyle.Exclamation, "Warning")
-            e.Handled = True
-        End If
-    End Sub
 End Class

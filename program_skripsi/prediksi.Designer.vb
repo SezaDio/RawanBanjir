@@ -30,22 +30,22 @@ Partial Class prediksi
         Me.Button1 = New System.Windows.Forms.Button()
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
-        Me.clear_prediksi = New System.Windows.Forms.Button()
-        Me.predict = New System.Windows.Forms.Button()
-        Me.input_mobil_pribadi = New System.Windows.Forms.TextBox()
-        Me.input_hujan = New System.Windows.Forms.TextBox()
-        Me.Label5 = New System.Windows.Forms.Label()
-        Me.Label4 = New System.Windows.Forms.Label()
-        Me.Label3 = New System.Windows.Forms.Label()
-        Me.Label2 = New System.Windows.Forms.Label()
+        Me.input_skordrainase = New System.Windows.Forms.ComboBox()
+        Me.input_skorgunalahan = New System.Windows.Forms.ComboBox()
+        Me.input_skorcurahhujan = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.input_suhu = New System.Windows.Forms.TextBox()
-        Me.input_drainase = New System.Windows.Forms.ComboBox()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.Label4 = New System.Windows.Forms.Label()
+        Me.Label5 = New System.Windows.Forms.Label()
+        Me.input_skortopografi = New System.Windows.Forms.TextBox()
+        Me.predict = New System.Windows.Forms.Button()
+        Me.clear_prediksi = New System.Windows.Forms.Button()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
-        Me.Label15 = New System.Windows.Forms.Label()
-        Me.prediksiIri = New System.Windows.Forms.TextBox()
-        Me.Label16 = New System.Windows.Forms.Label()
         Me.keterangan_prediksi = New System.Windows.Forms.TextBox()
+        Me.Label16 = New System.Windows.Forms.Label()
+        Me.kategori_jalan = New System.Windows.Forms.TextBox()
+        Me.Label15 = New System.Windows.Forms.Label()
         Me.Panel3 = New System.Windows.Forms.Panel()
         Me.Panel1.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
@@ -118,89 +118,60 @@ Partial Class prediksi
         '
         'GroupBox1
         '
-        Me.GroupBox1.Controls.Add(Me.input_drainase)
-        Me.GroupBox1.Controls.Add(Me.input_suhu)
+        Me.GroupBox1.Controls.Add(Me.input_skordrainase)
+        Me.GroupBox1.Controls.Add(Me.input_skorgunalahan)
+        Me.GroupBox1.Controls.Add(Me.input_skorcurahhujan)
         Me.GroupBox1.Controls.Add(Me.Label1)
         Me.GroupBox1.Controls.Add(Me.Label2)
         Me.GroupBox1.Controls.Add(Me.Label3)
         Me.GroupBox1.Controls.Add(Me.Label4)
         Me.GroupBox1.Controls.Add(Me.Label5)
-        Me.GroupBox1.Controls.Add(Me.input_hujan)
-        Me.GroupBox1.Controls.Add(Me.input_mobil_pribadi)
+        Me.GroupBox1.Controls.Add(Me.input_skortopografi)
         Me.GroupBox1.Controls.Add(Me.predict)
         Me.GroupBox1.Controls.Add(Me.clear_prediksi)
-        Me.GroupBox1.Location = New System.Drawing.Point(158, 33)
+        Me.GroupBox1.Location = New System.Drawing.Point(98, 33)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(374, 252)
+        Me.GroupBox1.Size = New System.Drawing.Size(508, 252)
         Me.GroupBox1.TabIndex = 1
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Parameter Prediksi"
         '
-        'clear_prediksi
+        'input_skordrainase
         '
-        Me.clear_prediksi.FlatAppearance.MouseOverBackColor = System.Drawing.Color.SkyBlue
-        Me.clear_prediksi.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.clear_prediksi.Location = New System.Drawing.Point(197, 189)
-        Me.clear_prediksi.Name = "clear_prediksi"
-        Me.clear_prediksi.Size = New System.Drawing.Size(75, 23)
-        Me.clear_prediksi.TabIndex = 10
-        Me.clear_prediksi.Text = "Clear"
-        Me.clear_prediksi.UseVisualStyleBackColor = True
+        Me.input_skordrainase.DisplayMember = "1"
+        Me.input_skordrainase.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.input_skordrainase.FormattingEnabled = True
+        Me.input_skordrainase.Items.AddRange(New Object() {"Tidak Tertampung", "Tertampung"})
+        Me.input_skordrainase.Location = New System.Drawing.Point(206, 70)
+        Me.input_skordrainase.Name = "input_skordrainase"
+        Me.input_skordrainase.Size = New System.Drawing.Size(281, 21)
+        Me.input_skordrainase.TabIndex = 30
         '
-        'predict
+        'input_skorgunalahan
         '
-        Me.predict.FlatAppearance.MouseOverBackColor = System.Drawing.Color.SkyBlue
-        Me.predict.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.predict.Location = New System.Drawing.Point(100, 189)
-        Me.predict.Name = "predict"
-        Me.predict.Size = New System.Drawing.Size(75, 23)
-        Me.predict.TabIndex = 9
-        Me.predict.Text = "Prediksi"
-        Me.predict.UseVisualStyleBackColor = True
+        Me.input_skorgunalahan.DisplayMember = "1"
+        Me.input_skorgunalahan.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.input_skorgunalahan.FormattingEnabled = True
+        Me.input_skorgunalahan.Items.AddRange(New Object() {"Rawa, Tambak, Taman, Lapangan/Padang Rumput", "Pekarangan, Bangunan & Halaman Sekitar, Lainnya", "Sawah", "Perkebunan, Kebun/Tegal, Ladang", "Hutan "})
+        Me.input_skorgunalahan.Location = New System.Drawing.Point(206, 100)
+        Me.input_skorgunalahan.Name = "input_skorgunalahan"
+        Me.input_skorgunalahan.Size = New System.Drawing.Size(281, 21)
+        Me.input_skorgunalahan.TabIndex = 29
         '
-        'input_mobil_pribadi
+        'input_skorcurahhujan
         '
-        Me.input_mobil_pribadi.Location = New System.Drawing.Point(206, 132)
-        Me.input_mobil_pribadi.Name = "input_mobil_pribadi"
-        Me.input_mobil_pribadi.Size = New System.Drawing.Size(124, 20)
-        Me.input_mobil_pribadi.TabIndex = 8
+        Me.input_skorcurahhujan.Location = New System.Drawing.Point(206, 39)
+        Me.input_skorcurahhujan.Name = "input_skorcurahhujan"
+        Me.input_skorcurahhujan.Size = New System.Drawing.Size(281, 20)
+        Me.input_skorcurahhujan.TabIndex = 5
         '
-        'input_hujan
+        'Label1
         '
-        Me.input_hujan.Location = New System.Drawing.Point(206, 70)
-        Me.input_hujan.Name = "input_hujan"
-        Me.input_hujan.Size = New System.Drawing.Size(124, 20)
-        Me.input_hujan.TabIndex = 6
-        '
-        'Label5
-        '
-        Me.Label5.AutoSize = True
-        Me.Label5.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label5.Location = New System.Drawing.Point(37, 132)
-        Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(102, 17)
-        Me.Label5.TabIndex = 4
-        Me.Label5.Text = "Skor Topografi"
-        '
-        'Label4
-        '
-        Me.Label4.AutoSize = True
-        Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label4.Location = New System.Drawing.Point(37, 101)
-        Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(120, 17)
-        Me.Label4.TabIndex = 3
-        Me.Label4.Text = "Skor Guna Lahan"
-        '
-        'Label3
-        '
-        Me.Label3.AutoSize = True
-        Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label3.Location = New System.Drawing.Point(37, 70)
-        Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(98, 17)
-        Me.Label3.TabIndex = 2
-        Me.Label3.Text = "Skor Drainase"
+        Me.Label1.AutoSize = True
+        Me.Label1.Location = New System.Drawing.Point(37, 61)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(0, 13)
+        Me.Label1.TabIndex = 0
         '
         'Label2
         '
@@ -212,37 +183,70 @@ Partial Class prediksi
         Me.Label2.TabIndex = 1
         Me.Label2.Text = "Skor Curah Hujan"
         '
-        'Label1
+        'Label3
         '
-        Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(37, 61)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(0, 13)
-        Me.Label1.TabIndex = 0
+        Me.Label3.AutoSize = True
+        Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label3.Location = New System.Drawing.Point(37, 70)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(98, 17)
+        Me.Label3.TabIndex = 2
+        Me.Label3.Text = "Skor Drainase"
         '
-        'input_suhu
+        'Label4
         '
-        Me.input_suhu.Location = New System.Drawing.Point(206, 39)
-        Me.input_suhu.Name = "input_suhu"
-        Me.input_suhu.Size = New System.Drawing.Size(124, 20)
-        Me.input_suhu.TabIndex = 5
+        Me.Label4.AutoSize = True
+        Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label4.Location = New System.Drawing.Point(37, 101)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(120, 17)
+        Me.Label4.TabIndex = 3
+        Me.Label4.Text = "Skor Guna Lahan"
         '
-        'input_drainase
+        'Label5
         '
-        Me.input_drainase.DisplayMember = "1"
-        Me.input_drainase.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.input_drainase.FormattingEnabled = True
-        Me.input_drainase.Items.AddRange(New Object() {"Baik", "Sedang", "Buruk"})
-        Me.input_drainase.Location = New System.Drawing.Point(206, 100)
-        Me.input_drainase.Name = "input_drainase"
-        Me.input_drainase.Size = New System.Drawing.Size(124, 21)
-        Me.input_drainase.TabIndex = 29
+        Me.Label5.AutoSize = True
+        Me.Label5.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label5.Location = New System.Drawing.Point(37, 132)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(102, 17)
+        Me.Label5.TabIndex = 4
+        Me.Label5.Text = "Skor Topografi"
+        '
+        'input_skortopografi
+        '
+        Me.input_skortopografi.Location = New System.Drawing.Point(206, 132)
+        Me.input_skortopografi.Name = "input_skortopografi"
+        Me.input_skortopografi.Size = New System.Drawing.Size(281, 20)
+        Me.input_skortopografi.TabIndex = 8
+        '
+        'predict
+        '
+        Me.predict.FlatAppearance.MouseOverBackColor = System.Drawing.Color.SkyBlue
+        Me.predict.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.predict.Location = New System.Drawing.Point(175, 191)
+        Me.predict.Name = "predict"
+        Me.predict.Size = New System.Drawing.Size(75, 23)
+        Me.predict.TabIndex = 9
+        Me.predict.Text = "Prediksi"
+        Me.predict.UseVisualStyleBackColor = True
+        '
+        'clear_prediksi
+        '
+        Me.clear_prediksi.FlatAppearance.MouseOverBackColor = System.Drawing.Color.SkyBlue
+        Me.clear_prediksi.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.clear_prediksi.Location = New System.Drawing.Point(272, 191)
+        Me.clear_prediksi.Name = "clear_prediksi"
+        Me.clear_prediksi.Size = New System.Drawing.Size(75, 23)
+        Me.clear_prediksi.TabIndex = 10
+        Me.clear_prediksi.Text = "Clear"
+        Me.clear_prediksi.UseVisualStyleBackColor = True
         '
         'GroupBox2
         '
         Me.GroupBox2.Controls.Add(Me.keterangan_prediksi)
         Me.GroupBox2.Controls.Add(Me.Label16)
-        Me.GroupBox2.Controls.Add(Me.prediksiIri)
+        Me.GroupBox2.Controls.Add(Me.kategori_jalan)
         Me.GroupBox2.Controls.Add(Me.Label15)
         Me.GroupBox2.Location = New System.Drawing.Point(98, 311)
         Me.GroupBox2.Name = "GroupBox2"
@@ -251,24 +255,17 @@ Partial Class prediksi
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Hasil Prediksi"
         '
-        'Label15
+        'keterangan_prediksi
         '
-        Me.Label15.AutoSize = True
-        Me.Label15.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label15.Location = New System.Drawing.Point(15, 31)
-        Me.Label15.Name = "Label15"
-        Me.Label15.Size = New System.Drawing.Size(217, 17)
-        Me.Label15.TabIndex = 30
-        Me.Label15.Text = "Skor Prediksi Tingkat Kerawanan"
-        '
-        'prediksiIri
-        '
-        Me.prediksiIri.Location = New System.Drawing.Point(73, 67)
-        Me.prediksiIri.Multiline = True
-        Me.prediksiIri.Name = "prediksiIri"
-        Me.prediksiIri.ReadOnly = True
-        Me.prediksiIri.Size = New System.Drawing.Size(102, 40)
-        Me.prediksiIri.TabIndex = 31
+        Me.keterangan_prediksi.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.keterangan_prediksi.Location = New System.Drawing.Point(303, 65)
+        Me.keterangan_prediksi.Multiline = True
+        Me.keterangan_prediksi.Name = "keterangan_prediksi"
+        Me.keterangan_prediksi.ReadOnly = True
+        Me.keterangan_prediksi.Size = New System.Drawing.Size(184, 29)
+        Me.keterangan_prediksi.TabIndex = 33
+        Me.keterangan_prediksi.TabStop = False
+        Me.keterangan_prediksi.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'Label16
         '
@@ -280,16 +277,26 @@ Partial Class prediksi
         Me.Label16.TabIndex = 32
         Me.Label16.Text = "Kategori Tingkat Kerawanan"
         '
-        'keterangan_prediksi
+        'kategori_jalan
         '
-        Me.keterangan_prediksi.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.keterangan_prediksi.Location = New System.Drawing.Point(303, 65)
-        Me.keterangan_prediksi.Multiline = True
-        Me.keterangan_prediksi.Name = "keterangan_prediksi"
-        Me.keterangan_prediksi.ReadOnly = True
-        Me.keterangan_prediksi.Size = New System.Drawing.Size(184, 40)
-        Me.keterangan_prediksi.TabIndex = 33
-        Me.keterangan_prediksi.TabStop = False
+        Me.kategori_jalan.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.kategori_jalan.Location = New System.Drawing.Point(73, 67)
+        Me.kategori_jalan.Multiline = True
+        Me.kategori_jalan.Name = "kategori_jalan"
+        Me.kategori_jalan.ReadOnly = True
+        Me.kategori_jalan.Size = New System.Drawing.Size(102, 27)
+        Me.kategori_jalan.TabIndex = 31
+        Me.kategori_jalan.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        '
+        'Label15
+        '
+        Me.Label15.AutoSize = True
+        Me.Label15.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label15.Location = New System.Drawing.Point(15, 31)
+        Me.Label15.Name = "Label15"
+        Me.Label15.Size = New System.Drawing.Size(217, 17)
+        Me.Label15.TabIndex = 30
+        Me.Label15.Text = "Skor Prediksi Tingkat Kerawanan"
         '
         'Panel3
         '
@@ -331,21 +338,21 @@ Partial Class prediksi
     Friend WithEvents Button1 As System.Windows.Forms.Button
     Friend WithEvents Panel2 As System.Windows.Forms.Panel
     Friend WithEvents GroupBox1 As System.Windows.Forms.GroupBox
-    Friend WithEvents input_drainase As System.Windows.Forms.ComboBox
-    Friend WithEvents input_suhu As System.Windows.Forms.TextBox
+    Friend WithEvents input_skorgunalahan As System.Windows.Forms.ComboBox
+    Friend WithEvents input_skorcurahhujan As System.Windows.Forms.TextBox
     Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents Label2 As System.Windows.Forms.Label
     Friend WithEvents Label3 As System.Windows.Forms.Label
     Friend WithEvents Label4 As System.Windows.Forms.Label
     Friend WithEvents Label5 As System.Windows.Forms.Label
-    Friend WithEvents input_hujan As System.Windows.Forms.TextBox
-    Friend WithEvents input_mobil_pribadi As System.Windows.Forms.TextBox
+    Friend WithEvents input_skortopografi As System.Windows.Forms.TextBox
     Friend WithEvents predict As System.Windows.Forms.Button
     Friend WithEvents clear_prediksi As System.Windows.Forms.Button
     Friend WithEvents GroupBox2 As System.Windows.Forms.GroupBox
     Friend WithEvents keterangan_prediksi As System.Windows.Forms.TextBox
     Friend WithEvents Label16 As System.Windows.Forms.Label
-    Friend WithEvents prediksiIri As System.Windows.Forms.TextBox
+    Friend WithEvents kategori_jalan As System.Windows.Forms.TextBox
     Friend WithEvents Label15 As System.Windows.Forms.Label
     Friend WithEvents Panel3 As System.Windows.Forms.Panel
+    Friend WithEvents input_skordrainase As System.Windows.Forms.ComboBox
 End Class

@@ -58,7 +58,7 @@ Public Class pelatihanPengujian
                 tmp(i, 0) = dr("skor_curahhujan")
                 tmp(i, 1) = dr("skor_drainase")
                 tmp(i, 2) = dr("skor_gunalahan")
-                tmp(i, 3) = dr("skor_topografi")
+                tmp(i, 3) = Math.Round((dr("skor_topografi")), 2)
                 tmp(i, 4) = dr("tingkat_kerawanan")
 
                 i = i + 1
@@ -195,7 +195,7 @@ Public Class pelatihanPengujian
         For i = 0 To uper0
             _backpro.List_Target(i) = tmp(i, 4)
         Next
-        Stop
+
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
@@ -374,11 +374,12 @@ Public Class pelatihanPengujian
         'Normalisasi data inputan (x1, x2, x3, x4) agar nilainya antara 0 hingga 1
         For i = 0 To xi_uji.GetUpperBound(0)
             For j = 0 To 3
-                If (xi_uji(i, j) = 0 Or xi_uji(i, j) = 1 Or xi_uji(i, j) = 0.5) Then
-                    xi_uji(i, j) = xi_uji(i, j)
-                Else
-                    xi_uji(i, j) = ((0.8 * (xi_uji(i, j) - min(j))) / (max(j) - min(j)) + 0.1)
-                End If
+                'If (xi_uji(i, j) = 0 Or xi_uji(i, j) = 1 Or xi_uji(i, j) = 0.5) Then
+                '    xi_uji(i, j) = xi_uji(i, j)
+                'Else
+
+                xi_uji(i, j) = ((0.8 * (xi_uji(i, j) - min(j))) / (max(j) - min(j)) + 0.1)
+                'End If
             Next
         Next
 
@@ -393,13 +394,14 @@ Public Class pelatihanPengujian
                 nilai_kecil = ListTarget_uji(i)
             End If
         Next
+
         'Normalisasi nilai pada tiap target di dalam list
         For i = 0 To ListTarget_uji.GetUpperBound(0)
-            If (ListTarget_uji(i) = 0 Or ListTarget_uji(i) = 1 Or ListTarget_uji(i) = 0.5) Then
-                ListTarget_uji(i) = Math.Round(ListTarget_uji(i), 4)
-            Else
-                ListTarget_uji(i) = Math.Round(((0.8 * (ListTarget_uji(i) - nilai_kecil)) / (nilai_besar - nilai_kecil) + 0.1), 4)
-            End If
+            'If (ListTarget_uji(i) = 0 Or ListTarget_uji(i) = 1 Or ListTarget_uji(i) = 0.5) Then
+            '    ListTarget_uji(i) = Math.Round(ListTarget_uji(i), 4)
+            'Else
+            ListTarget_uji(i) = Math.Round(((0.8 * (ListTarget_uji(i) - nilai_kecil)) / (nilai_besar - nilai_kecil) + 0.1), 4)
+            'End If
         Next
 
         Dim _FeedForward_Pengujian As New feedForwardPengujian
@@ -410,8 +412,12 @@ Public Class pelatihanPengujian
         simpan.Enabled = True
         database.hitungData_pengujian()
         jumlahDataPengujian.Text = database.jum_dataPengujian
+
+        'Tingkat Akurasi
         mse_hasil_uji = _FeedForward_Pengujian.pengujian()
-        msePengujian.Text = mse_hasil_uji
+        mse_hasil_uji = Math.Round((mse_hasil_uji / (xi_uji.GetUpperBound(0) + 1)) * 100, 2)
+        msePengujian.Text = mse_hasil_uji.ToString + " %"
+
         'persentase = Math.Round((data_dikenali / (xi_uji.GetUpperBound(0) + 1)) * 100, 2)
 
         'tidak_kenal.Text = (database.tmp.GetUpperBound(0) + 1 - data_dikenali).ToString
@@ -514,5 +520,9 @@ Public Class pelatihanPengujian
             MsgBox("Inputan harus berupa angka dengan nilai lebih dari 0", MsgBoxStyle.Exclamation, "Warning")
             e.Handled = True
         End If
+    End Sub
+
+    Private Sub Label12_Click(sender As Object, e As EventArgs) Handles Label12.Click
+
     End Sub
 End Class

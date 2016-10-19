@@ -23,9 +23,9 @@ Partial Class pelatihanPengujian
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(pelatihanPengujian))
-        Dim ChartArea3 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
-        Dim Legend3 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
-        Dim Series3 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim ChartArea1 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
+        Dim Legend1 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
+        Dim Series1 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
         Me.Panel3 = New System.Windows.Forms.Panel()
         Me.GroupBox4 = New System.Windows.Forms.GroupBox()
         Me.Label10 = New System.Windows.Forms.Label()
@@ -110,20 +110,20 @@ Partial Class pelatihanPengujian
         '
         'grafikLatih
         '
-        ChartArea3.AxisX.Title = "Epoch"
-        ChartArea3.AxisY.Title = "Nilai MSE"
-        ChartArea3.Name = "ChartArea1"
-        Me.grafikLatih.ChartAreas.Add(ChartArea3)
-        Legend3.Name = "Legend1"
-        Legend3.Title = "Nilai MSE Akhir"
-        Me.grafikLatih.Legends.Add(Legend3)
+        ChartArea1.AxisX.Title = "Epoch"
+        ChartArea1.AxisY.Title = "Nilai MSE"
+        ChartArea1.Name = "ChartArea1"
+        Me.grafikLatih.ChartAreas.Add(ChartArea1)
+        Legend1.Name = "Legend1"
+        Legend1.Title = "Nilai MSE Akhir"
+        Me.grafikLatih.Legends.Add(Legend1)
         Me.grafikLatih.Location = New System.Drawing.Point(7, 19)
         Me.grafikLatih.Name = "grafikLatih"
-        Series3.ChartArea = "ChartArea1"
-        Series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
-        Series3.Legend = "Legend1"
-        Series3.Name = "Series1"
-        Me.grafikLatih.Series.Add(Series3)
+        Series1.ChartArea = "ChartArea1"
+        Series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
+        Series1.Legend = "Legend1"
+        Series1.Name = "Series1"
+        Me.grafikLatih.Series.Add(Series1)
         Me.grafikLatih.Size = New System.Drawing.Size(674, 206)
         Me.grafikLatih.TabIndex = 0
         Me.grafikLatih.Text = "Chart1"
@@ -149,9 +149,9 @@ Partial Class pelatihanPengujian
         Me.Label12.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label12.Location = New System.Drawing.Point(12, 57)
         Me.Label12.Name = "Label12"
-        Me.Label12.Size = New System.Drawing.Size(139, 17)
+        Me.Label12.Size = New System.Drawing.Size(157, 17)
         Me.Label12.TabIndex = 1
-        Me.Label12.Text = "MSE Hasil Pengujian"
+        Me.Label12.Text = "Akurasi Hasil Pengujian"
         '
         'Label13
         '

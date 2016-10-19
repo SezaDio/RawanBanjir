@@ -17,9 +17,10 @@ Public Class feedForwardPengujian
 
     Public Function pengujian() As Double
         Dim i As Integer
+        Dim kenal As Integer
+        Dim dataKenal As Integer = 0
         Dim j As Integer
         Dim hasil_error As Double = 0
-        Dim er As Double
         Dim hidden As Integer = Convert.ToInt32(pelatihanPengujian.input_hidden.Text)
         Dim z_netj_uji() As Double
         Dim masukan(,) As Double = pelatihanPengujian.xi_uji
@@ -55,13 +56,33 @@ Public Class feedForwardPengujian
             Next
             y_k(pola) = Back_Pro.activasi(y_netk(pola))
 
-            er = Math.Pow((t(pola) - y_k(pola)), 2)
-            hasil_error = hasil_error + er
+            ' Ubah ke bentuk kelas
+            If y_k(pola) >= 0.1 And y_k(pola) <= 0.3 Then
+                y_k(pola) = 0.1
+            ElseIf y_k(pola) > 0.3 And y_k(pola) <= 0.5 Then
+                y_k(pola) = 0.3667
+            ElseIf y_k(pola) > 0.5 And y_k(pola) <= 0.7 Then
+                y_k(pola) = 0.6333
+            ElseIf y_k(pola) > 0.7 And y_k(pola) <= 0.9 Then
+                y_k(pola) = 0.9
+            End If
+
+            'Pembandingan Yk dengan Target
+            If y_k(pola) = t(pola) Then
+                kenal = 1
+            Else
+                kenal = 0
+            End If
+
+            'Counter data dikenali
+            dataKenal = dataKenal + kenal
+
+            'er = Math.Pow((t(pola) - y_k(pola)), 2)
+            'hasil_error = hasil_error + er
 
             My.Application.Log.WriteEntry(CStr(pola) + " == " + CStr(y_k(pola)) + " " + CStr(t(pola)))
         Next
-        hasil_error = Math.Round((hasil_error / input_uji), 5)
-
-        Return hasil_error
+       
+        Return dataKenal
     End Function
 End Class
