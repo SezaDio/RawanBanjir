@@ -13,3 +13,18 @@ D:\Kuliah\Semester 8\SKRIPSWEET\program_skripsi\program_skripsi\obj\Release\prog
 D:\Kuliah\Semester 8\SKRIPSWEET\program_skripsi\program_skripsi\obj\Release\WindowsApplication1.tambahData.resources
 D:\Kuliah\Semester 8\SKRIPSWEET\program_skripsi\program_skripsi\obj\Release\WindowsApplication1.pelatihanPengujian.resources
 D:\Kuliah\Semester 8\SKRIPSWEET\program_skripsi\program_skripsi\obj\Release\WindowsApplication1.trainingProgress.resources
+D:\Project Pak Ragil\RawanBanjir\program_skripsi\bin\Release\program_skripsi.exe.config
+D:\Project Pak Ragil\RawanBanjir\program_skripsi\obj\Release\program_skripsi.exe
+D:\Project Pak Ragil\RawanBanjir\program_skripsi\obj\Release\program_skripsi.xml
+D:\Project Pak Ragil\RawanBanjir\program_skripsi\obj\Release\program_skripsi.pdb
+D:\Project Pak Ragil\RawanBanjir\program_skripsi\bin\Release\program_skripsi.exe
+D:\Project Pak Ragil\RawanBanjir\program_skripsi\bin\Release\program_skripsi.pdb
+D:\Project Pak Ragil\RawanBanjir\program_skripsi\bin\Release\program_skripsi.xml
+D:\Project Pak Ragil\RawanBanjir\program_skripsi\obj\Release\WindowsApplication1.database.resources
+D:\Project Pak Ragil\RawanBanjir\program_skripsi\obj\Release\WindowsApplication1.prediksi.resources
+D:\Project Pak Ragil\RawanBanjir\program_skripsi\obj\Release\WindowsApplication1.tambahData.resources
+D:\Project Pak Ragil\RawanBanjir\program_skripsi\obj\Release\WindowsApplication1.trainingProgress.resources
+D:\Project Pak Ragil\RawanBanjir\program_skripsi\obj\Release\WindowsApplication1.home.resources
+D:\Project Pak Ragil\RawanBanjir\program_skripsi\obj\Release\WindowsApplication1.pelatihanPengujian.resources
+D:\Project Pak Ragil\RawanBanjir\program_skripsi\obj\Release\WindowsApplication1.Resources.resources
+D:\Project Pak Ragil\RawanBanjir\program_skripsi\obj\Release\program_skripsi.vbproj.GenerateResource.Cache
